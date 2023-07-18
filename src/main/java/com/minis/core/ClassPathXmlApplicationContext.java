@@ -8,13 +8,13 @@ import com.minis.beans.BeanDefinition;
  * @Date: 2023/7/4 14:32
  * @Description:集成BeanFactory,Resource,BeanReader
  */
-public class ClassPathXmlApplicationContext implements BeanFactory{
+public class ClassPathXmlApplicationContext implements BeanFactory,ApplicationEventPublisher{
 
-    BeanFactory beanFactory;
+    SimpleBeanFactory beanFactory;
 
     public ClassPathXmlApplicationContext(String fileName) {
         Resource resource = new ClassPathXmlResource(fileName);
-        BeanFactory beanFactory = new SimpleBeanFactory();
+        SimpleBeanFactory beanFactory = new SimpleBeanFactory();
         XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(beanFactory);
         reader.loadBeanDefinitions(resource);
         this.beanFactory=beanFactory;
@@ -26,7 +26,36 @@ public class ClassPathXmlApplicationContext implements BeanFactory{
     }
 
     @Override
+    public Boolean containsBean(String name) {
+        return this.beanFactory.containsBean(name);
+    }
+
+    @Override
+    public void registryBean(String beanName, Object obj) {
+        this.beanFactory.registryBean(beanName,obj);
+    }
+
+    @Override
+    public boolean isSingleton(String name) {
+        return false;
+    }
+
+    @Override
+    public boolean isPrototype(String name) {
+        return false;
+    }
+
+    @Override
+    public Class getType(String name) {
+        return null;
+    }
+
     public void registerBeanDefinition(BeanDefinition beanDefinition) {
         this.beanFactory.registerBeanDefinition(beanDefinition);
+    }
+
+    @Override
+    public void publishEvent(ApplicationEvent event) {
+
     }
 }

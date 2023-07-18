@@ -9,5 +9,15 @@ import com.minis.beans.BeanDefinition;
  */
 public interface BeanFactory {
     Object getBean(String beanName) throws BeansException;
-    void registerBeanDefinition(BeanDefinition beanDefinition);
+
+    Boolean containsBean(String name);
+
+    void registryBean(String beanName, Object obj);
+
+    boolean isSingleton(String name);
+
+    boolean isPrototype(String name);
+
+    Class getType(String name);
+
 }
