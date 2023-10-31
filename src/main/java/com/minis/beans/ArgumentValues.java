@@ -8,7 +8,30 @@ import java.util.*;
  * @Description:
  */
 public class ArgumentValues {
-    private final Map<Integer, ArgumentValue> indexedArgumentValues = new HashMap<>(0);
+    private final List<ArgumentValue> argumentValueList = new ArrayList<>();
+
+    public ArgumentValues() {
+
+    }
+
+    public void addArgumentValue(ArgumentValue argumentValue) {
+        this.argumentValueList.add(argumentValue);
+    }
+
+    public ArgumentValue getIndexedArgumentValue(int index) {
+        ArgumentValue argumentValue = this.argumentValueList.get(index);
+        return argumentValue;
+    }
+
+    public int getArgumentCount() {
+        return (this.argumentValueList.size());
+    }
+
+    public boolean isEmpty() {
+        return (this.argumentValueList.isEmpty());
+    }
+
+    /*private final Map<Integer, ArgumentValue> indexedArgumentValues = new HashMap<>(0);
     private final List<ArgumentValue> genericArgumentValues = new LinkedList<>();
 
     private void addArgumentValue(Integer key, ArgumentValue newValue) {
@@ -56,5 +79,5 @@ public class ArgumentValues {
 
     public boolean isEmpty() {
         return this.genericArgumentValues.isEmpty();
-    }
+    }*/
 }
