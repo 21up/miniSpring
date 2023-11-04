@@ -1,4 +1,6 @@
-package com.minis.core;
+package com.minis.beans.factory.support;
+
+import com.minis.core.SingletonBeanRegistry;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @Date: 2023/7/18 9:46
  * @Description:默认实现
  */
-public class DefaultSingletonBeanRegistry implements SingletonBeanRegistry{
+public class DefaultSingletonBeanRegistry implements SingletonBeanRegistry {
 
     protected List<String> beanNames=new ArrayList<>();
     //使用线程安全的容器

@@ -1,7 +1,6 @@
-package com.minis.core;
+package com.minis.beans.factory;
 
 import com.minis.BeansException;
-import com.minis.beans.BeanDefinition;
 
 /**
  * @Author: 7up

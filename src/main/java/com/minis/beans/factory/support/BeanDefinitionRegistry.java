@@ -1,4 +1,4 @@
-package com.minis.beans;
+package com.minis.beans.factory.support;
 
 /**
  * 类似于仓房beanDefinition的仓库

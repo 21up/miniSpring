@@ -1,7 +1,13 @@
-package com.minis.core;
+package com.minis.beans.factory.xml;
 
 
 import com.minis.beans.*;
+import com.minis.beans.factory.support.ArgumentValue;
+import com.minis.beans.factory.support.ArgumentValues;
+import com.minis.beans.factory.support.BeanDefinition;
+import com.minis.core.Resource;
+import com.minis.beans.factory.support.SimpleBeanFactory;
+import com.minis.core.fourth_class.AbstractBeanFactory;
 import org.dom4j.Element;
 
 import java.util.ArrayList;
@@ -13,10 +19,10 @@ import java.util.List;
  * @Description:将Resoure中解析的xml转换成BeanDefinition
  */
 public class XmlBeanDefinitionReader {
-    SimpleBeanFactory simpleBeanFactory;
+    AbstractBeanFactory beanFactory;
 
-    public XmlBeanDefinitionReader(SimpleBeanFactory simpleBeanFactory) {
-        this.simpleBeanFactory = simpleBeanFactory;
+    public XmlBeanDefinitionReader(AbstractBeanFactory beanFactory) {
+        this.beanFactory = beanFactory;
     }
     public void loadBeanDefinitions(Resource resource){
         while (resource.hasNext()){
@@ -35,7 +41,7 @@ public class XmlBeanDefinitionReader {
                 String pRef = propertyElement.attributeValue("ref");
                 String pV="";
                 boolean isRef=false;
-                if (pValue!=null&&pValue.equals("")){
+                if (pValue!=null&&!pValue.equals("")){
                     isRef=false;
                     pV=pValue;
                 }else if (pRef!=null && !pRef.equals("")){
@@ -58,7 +64,7 @@ public class XmlBeanDefinitionReader {
                 argumentValues.addArgumentValue(new ArgumentValue(aValue,aType,aName));
             }
             beanDefinition.setConstructorArgumentValues(argumentValues);
-            this.simpleBeanFactory.registerBeanDefinition(beanId,beanDefinition);
+            this.beanFactory.registerBeanDefinition(beanId,beanDefinition);
         }
     }
 }

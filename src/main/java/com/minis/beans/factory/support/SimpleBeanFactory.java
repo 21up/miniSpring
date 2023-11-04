@@ -1,7 +1,8 @@
-package com.minis.core;
+package com.minis.beans.factory.support;
 
 import com.minis.BeansException;
 import com.minis.beans.*;
+import com.minis.beans.factory.BeanFactory;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;

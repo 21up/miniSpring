@@ -1,6 +1,6 @@
 package com.minis;
 
-import com.minis.beans.BeanDefinition;
+import com.minis.beans.factory.support.BeanDefinition;
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;

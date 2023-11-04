@@ -1,6 +1,9 @@
 package com.minis.test;
 
+import com.minis.core.fourth_class.AutoWired;
+
 public class BaseService {
+    @AutoWired
     private BaseBaseService bbs;
 
     public BaseBaseService getBbs() {
